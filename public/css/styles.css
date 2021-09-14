@@ -1,0 +1,68 @@
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+
+.navbar-nav li a:hover {
+  color: coral !important;
+}
+
+button {
+  color: coral;
+  border: none;
+  border-radius: 5%;
+  padding: 1em;
+  margin-top: 1em;
+  font-weight: 600;
+}
+
+button:hover {
+  color: coral;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.addPost,
+.readMore {
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: coral;
+  text-transform: uppercase;
+}
+
+.addPost:hover, .readMore:hover, .readMore:active {
+  color: coral;
+}
+
+h3 {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.footer-padding {
+  padding-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: coral;
+}
+
+.footer p {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #fff;
+}

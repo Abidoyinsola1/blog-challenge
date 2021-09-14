@@ -1,0 +1,19 @@
+<%- include('partials/header.ejs') %>
+
+<h2><%= title %></h2>
+<p><%= homeContent %></p>
+
+<% addPosts.map((item) => { %>
+<h3><%= item.title %></h3>
+<p>
+  <%= item.body.slice(0, 200) + '...' %>
+  <a href="/post/<%= item.title %>" class="readMore" target="_blank"
+    >Read More</a
+  >
+</p>
+
+<% }) %>
+
+<a href="/compose" class="addPost">ADD NEW POST</a>
+
+<%- include('partials/footer.ejs') %>
