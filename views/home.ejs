@@ -2,7 +2,7 @@
 
 <h2><%= title %></h2>
 <p><%= homeContent %></p>
-
+<a href="/compose" class="addPost">ADD NEW POST</a>
 <% addPosts.map((item) => { %>
 <h3><%= item.postTitle %></h3>
 <% console.log(item) %>
@@ -14,7 +14,5 @@
 </p>
 
 <% }) %>
-
-<a href="/compose" class="addPost">ADD NEW POST</a>
 
 <%- include('partials/footer.ejs') %>
