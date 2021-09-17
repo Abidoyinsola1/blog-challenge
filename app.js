@@ -32,21 +32,20 @@ const postSchema = mongoose.Schema({
 
 const Post = mongoose.model('post', postSchema)
 
-const posts = []
+// const posts = []
 app.get('/', (req, res) => {
 
-  Post.find({}, function (err, docs) {
+  Post.find({ __v: 0 }, (err, docs) => {
     if (err) {
       console.log(err)
     } else {
       res.render('home', {
         title: 'Home Page',
         homeContent: homeStartingContent,
-        addPosts: posts
+        addPosts: docs
       })
     }
   })
-
 })
 
 app.get('/about-us', (req, res) => {
@@ -73,37 +72,36 @@ app.post('/compose', (req, res) => {
   var newTitle = req.body.postTitle
   var newBody = req.body.postBody
 
-  var post = {
-    title: newTitle,
-    body: newBody
-  }
-  posts.push(post)
-  console.log(posts)
-
   const addPost = Post({
     postTitle: newTitle,
     postBody: newBody,
     updated: Date.now()
 
   })
-  addPost.save()
-  res.redirect('/')
+  addPost.save((err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.redirect('/')
+    }
+  })
+
 })
 
 app.get('/post/:title', (req, res) => {
   const title = _.lowerCase([req.params.title])
-  posts.map((item) => {
-    const numberOfWords = item.body.length
-    if (title === _.lowerCase([item.title])) {
+  Post.findOne({ postTitle: req.params.title }, (err, doc) => {
+    if (err) {
+      console.log(err)
+    } else {
+      const numberOfWords = doc.postBody.length
       res.render('post', {
-        title: item.title,
-        postPage: item.body,
+        title: doc.postTitle,
+        postPage: doc.postBody,
         timeOfReading: time.estimatedTime(numberOfWords)
       })
     }
-
   })
-
 })
 
 app.listen(process.env.PORT || 3000, function () {

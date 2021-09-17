@@ -4,10 +4,11 @@
 <p><%= homeContent %></p>
 
 <% addPosts.map((item) => { %>
-<h3><%= item.title %></h3>
+<h3><%= item.postTitle %></h3>
+<% console.log(item) %>
 <p>
-  <%= item.body.slice(0, 200) + '...' %>
-  <a href="/post/<%= item.title %>" class="readMore" target="_blank"
+  <%= item.postBody.slice(0, 200) + '...' %>
+  <a href="/post/<%= item.postTitle %>" class="readMore" target="_blank"
     >Read More</a
   >
 </p>
